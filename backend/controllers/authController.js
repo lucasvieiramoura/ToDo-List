@@ -40,7 +40,7 @@ const registerUser = async (req, res) => {
 // @desc    Autenticar usuário e obter token (Login)
 // @route   POST /api/auth/login
 // @access  Público
-const authUser = async (req, res) => {
+const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -64,4 +64,4 @@ const authUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, authUser };
+module.exports = { registerUser, loginUser };
