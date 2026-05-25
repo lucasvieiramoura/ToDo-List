@@ -17,12 +17,13 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Permite que o Express entenda requisições com corpo JSON no corpo da requisição
 
+
+app.use('/api/auth', authRoutes);
+
 //Rotas
 app.use('/', (req, res) => {
   res.send('API ToDo List funcionando!');
 });
-
-app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

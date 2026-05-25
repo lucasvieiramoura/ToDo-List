@@ -53,7 +53,8 @@ const loginUser = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                token: generateToken(user._id) // Gera um token JWT para o usuário autenticado
+                token: generateToken(user._id), // Gera um token JWT para o usuário autenticado,
+                message: 'Login bem-sucedido'
             });
         } else {
             res.status(401).json({ message: 'E-mail ou senha inválidos' });
