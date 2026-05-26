@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
 const authRoutes = require('./routes/authRoutes');
+const toDoRoutes = require('./routes/ToDoRoutes');
 
 //Carrega as variáveis de ambiente do arquivo .env
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(express.json()); // Permite que o Express entenda requisições com corp
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/todos', toDoRoutes);
 
 //Rotas
 app.use('/', (req, res) => {

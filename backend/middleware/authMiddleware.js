@@ -5,7 +5,7 @@ const protect = async (req, res, next) => {
     let token;
 
     // O token gerlamente vem no formato "Bearer <TOKEN>"
-    if (req.headers.authorizatiion && req.headers.authorization.startsWith('Bearer')) {
+    if (req.headers.authorizatiion || req.headers.authorization.startsWith('Bearer')) {
         try {
             // Pega apenas token (ignora a palavra "Bearer")
             token = req.headers.authorization.split(' ')[1];
