@@ -1,14 +1,6 @@
 import {useState, useContext, useEffect} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext'; // Importa o contexto de autenticação
-
-const navigate = useNavigate();
-const { login, user } = useContext(AuthContext); // Usa a função de login e o estado do usuário do contexto
-
-useEffect(() => {
-    if (user) 
-        navigate('/'); // Se o usuário já estiver logado, redireciona para a página principal
-}, [user, navigate]);
 
 
 const Login = () => {
@@ -16,7 +8,12 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // Estado para armazenar mensagens de erro
 
-    const { login } = useContext(AuthContext); // Usa a função de login do contexto
+   const { login, user } = useContext(AuthContext); // Usa a função de login do contexto
+    const navigate = useNavigate();
+
+    useEffect(() => {
+    if (user) navigate('/');
+    }, [user, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Previne o comportamento padrão do formulário

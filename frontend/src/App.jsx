@@ -1,8 +1,8 @@
-import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
-import { Dashboard } from './pages/Dashboard';
-import PrivateRoute from './components/PrivateRoute'; // Importa o componente de rota privada
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -15,15 +15,15 @@ function App() {
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
-          }           
-          />
-
-          {/* Rotas Públicas*/}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          {/* Redireecina qualquer rota inexistente para a raiz */}
-          <Route path="*" element={<Navigate to="/" />} />
+          } 
+        />
+        
+        {/* Rotas Públicas */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        
+        {/* Redireciona qualquer rota inexistente para a raiz */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

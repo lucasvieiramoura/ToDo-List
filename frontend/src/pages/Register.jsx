@@ -2,13 +2,6 @@ import {useState, useContext, useEffect} from 'react';
 import { AuthContext } from '../context/AuthContext'; // Importa o contexto de autenticação
 import { Link, useNavigate } from 'react-router-dom';
 
-const navigate = useNavigate();
-const { user } = useContext(AuthContext); // Usa o estado do usuário do contexto    
-
-useEffect(() => {
-    if (user) 
-        navigate('/');
-}, [user, navigate]); // Se o usuário já estiver logado, redireciona para a página principal
 
 const Register = () => {
     const [name, setName] = useState(''); // Estado para armazenar o nome do usuário
@@ -16,7 +9,13 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // Estado para armazenar mensagens de erro
 
-    const { register } = useContext(AuthContext); // Usa a função de registro do contexto
+    const {register, user} = useContext(AuthContext);  // Usa a função de registro do contexto
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (user) 
+            navigate('/');
+    }, [user, navigate]); // Se o usuário já estiver logado, redireciona para a página principal
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
