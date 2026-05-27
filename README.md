@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Todo-List" title="ToDo-List" src="   https://cdn-icons-png.flaticon.com/512/2387/2387635.png " width="220px" />
+  <img alt="Todo-List" title="ToDo-List" src="https://cdn-icons-png.flaticon.com/512/2387/2387635.png" width="220px" />
 </h1>
 
 <p align="center">
