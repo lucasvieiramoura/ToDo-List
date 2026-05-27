@@ -1,16 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { Dashboard } from './pages/Dashboard';
+import PrivateRoute from './components/PrivateRoute'; // Importa o componente de rota privada
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-      <div>
-        <h1 className="title">To-Do List Front-End Inicializado! 🚀</h1>
-      </div>
-  )
+    <Router>
+      <Routes>
+        {/* Rota Raiz protegida por PrivateRoute */}
+        <Route 
+          path="/" 
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }           
+          />
+
+          {/* Rotas Públicas*/}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Redireecina qualquer rota inexistente para a raiz */}
+          <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

@@ -1,5 +1,14 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { AuthContext } from '../context/AuthContext'; // Importa o contexto de autenticação
+import { Link, useNavigate } from 'react-router-dom';
+
+const navigate = useNavigate();
+const { user } = useContext(AuthContext); // Usa o estado do usuário do contexto    
+
+useEffect(() => {
+    if (user) 
+        navigate('/');
+}, [user, navigate]); // Se o usuário já estiver logado, redireciona para a página principal
 
 const Register = () => {
     const [name, setName] = useState(''); // Estado para armazenar o nome do usuário
@@ -29,7 +38,7 @@ const Register = () => {
         } else {
             // Registro bem-sucedido, o usuário já está salvo no contexto e localStorage
             // Você pode redirecionar para a página principal ou mostrar uma mensagem de sucesso aqui
-            alert('Conta Criada com sucesso!');
+            navigate('/'); // Redireciona para a página de login após registro bem-sucedido
         }
         };
 
@@ -78,7 +87,7 @@ const Register = () => {
                 </form>
 
                 <p style={styles.footerText}>
-                    Já tem uma conta? <a href="/login" style={styles.link}>Faça login</a>
+                    Já tem uma conta? <Link to="/login" style={styles.link}>Faça login</Link>
                 </p>
             </div>
         </div>

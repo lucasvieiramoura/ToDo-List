@@ -1,5 +1,15 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext'; // Importa o contexto de autenticação
+
+const navigate = useNavigate();
+const { login, user } = useContext(AuthContext); // Usa a função de login e o estado do usuário do contexto
+
+useEffect(() => {
+    if (user) 
+        navigate('/'); // Se o usuário já estiver logado, redireciona para a página principal
+}, [user, navigate]);
+
 
 const Login = () => {
     const [email, setEmail] = useState(''); // Estado para armazenar o email do usuário
@@ -24,7 +34,7 @@ const Login = () => {
         {
             // Login bem-sucedido, o usuário já está salvo no contexto e localStorage
             // Você pode redirecionar para a página principal ou mostrar uma mensagem de sucesso aqui
-            alert('Login bem-sucedido!');
+            navigate('/'); // Redireciona para a página principal após login bem-sucedido
         }
     };
 
@@ -60,7 +70,7 @@ const Login = () => {
                 </form>
 
                 <p style={styles.footerText}>
-                    Não tem uma conta? <a href="/register" style={styles.link}>Cadastre-se</a>
+                    Não tem uma conta? <Link to="/register" style={styles.link}>Cadastre-se</Link>
                 </p>
             </div>
         </div>
