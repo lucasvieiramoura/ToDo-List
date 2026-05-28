@@ -4,7 +4,8 @@
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Arquitetura</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 <p align="center">
@@ -34,6 +35,27 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 O ToDo List é um aplicativo simples, para auxiliar com a tarefas do dia a dia, de forma que consiga gerenciar visualmente a quantidade de tarefas, e destingua bem entra tarefa concluídas e tarefas pendentes.
+
+## 🛠️ Aquitetura 
+
+### Backend
+    backend/
+    ├── config/
+    │   └── db.js
+    ├── controllers/
+    ├── middleware/
+    ├── models/
+    ├── routes/
+    ├── .env
+    ├── .gitignore
+    └── server.js
+    
+### Fronted
+    frontend/src/
+    ├── components/   # Componentes menores e reutilizáveis (Input, Botão, Card de Tarefa)
+    ├── context/      # Gerenciamento de estado global (Autenticação/Login)
+    ├── pages/        # Telas completas (Login.jsx, Register.jsx, Dashboard.jsx)
+    ├── services/     # Configurações de API (Axios)
 
 
 # Autor
